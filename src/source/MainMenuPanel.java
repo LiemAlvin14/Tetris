@@ -23,7 +23,6 @@ public class MainMenuPanel extends JPanel {
 	JLabel play, exit, howToPlay;
 	BufferedImage cube;
 	BufferedImage img;
-	Clip clip;
 	private String highscore = "0";
 	private int currHighscore = 0;
 	private int newHighscore = 0;
@@ -39,7 +38,15 @@ public class MainMenuPanel extends JPanel {
 		g.drawImage(img, 40, 320, null);
 		g.drawImage(cube, 250, 30, 130, 130, null);
 	}
-
+	
+	private void initPicture(){
+		
+	}
+	private void initSound(){
+		
+	}
+	
+	
 	public MainMenuPanel() {
 		setLayout(null);
 
@@ -173,14 +180,7 @@ public class MainMenuPanel extends JPanel {
 		add(exit);
 
 		// masukkin sound
-		try {
-			clip = AudioSystem.getClip();
-			AudioInputStream stream = AudioSystem.getAudioInputStream(new File("Sprites/TonariNoTotoro.wav"));
-			clip.open(stream);
-			clip.start();
-		} catch (LineUnavailableException | UnsupportedAudioFileException | IOException e1) {
-			e1.printStackTrace();
-		}
+		Sound.initSound("Sprites/TonariNoTotoro.wav");
 	}
 
 	public void setHighscore(int score) {

@@ -420,7 +420,7 @@ public class HowToPlayPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				HowToPlayFrame.window.dispose();
-				MainMenuPanel.clip.stop();
+				Sound.stop();
 				new MainMenuFrame();
 			}
 		});

@@ -268,7 +268,7 @@ public class Board extends JPanel implements KeyListener {
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			if (gameOver) {
-				MainMenuPanel.clip.stop();
+				Sound.stop();
 				new MainMenuFrame();
 
 			} else
