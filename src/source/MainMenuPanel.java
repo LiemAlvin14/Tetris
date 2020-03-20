@@ -18,7 +18,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MainMenuPanel extends JPanel {
+public class MainMenuPanel extends JPanel implements Panel {
 	JLabel title, upTitle, upUpTitle;
 	JLabel play, exit, howToPlay;
 	BufferedImage cube;
@@ -39,17 +39,7 @@ public class MainMenuPanel extends JPanel {
 		g.drawImage(cube, 250, 30, 130, 130, null);
 	}
 	
-	private void initPicture(){
-		
-	}
-	private void initSound(){
-		
-	}
-	
-	
-	public MainMenuPanel() {
-		setLayout(null);
-
+	public void initPicture(){
 		try {
 			img = ImageIO.read(Board.class.getResource("/totoro.png"));
 		} catch (IOException e) {
@@ -60,13 +50,9 @@ public class MainMenuPanel extends JPanel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		// title = new JLabel("TETRIS 2019", JLabel.CENTER);
-		// title.setBounds(50, 0, 500, 50);
-		// title.setFont(new Font("Helvetica", Font.BOLD, 36));
-		// title.setForeground(Color.BLUE);
-		// add(title);
-
+	}
+	
+	private void initPlayBut(){
 		play = new JLabel("Play", JLabel.CENTER);
 		play.setBounds(60, 170, 500, 50);
 		play.setFont(new Font("Orange Kid", Font.BOLD, 36));
@@ -104,7 +90,9 @@ public class MainMenuPanel extends JPanel {
 			}
 		});
 		add(play);
-
+	}
+	
+	private void initHTPBut(){
 		howToPlay = new JLabel("How To Play", JLabel.CENTER);
 		howToPlay.setBounds(60, 213, 500, 50);
 		howToPlay.setFont(new Font("Orange Kid", Font.BOLD, 36));
@@ -142,7 +130,9 @@ public class MainMenuPanel extends JPanel {
 			}
 		});
 		add(howToPlay);
-
+	}
+	
+	private void initExitBut(){
 		exit = new JLabel("Exit", JLabel.CENTER);
 		exit.setBounds(60, 250, 500, 50);
 		exit.setFont(new Font("Orange Kid", Font.BOLD, 36));
@@ -178,6 +168,26 @@ public class MainMenuPanel extends JPanel {
 			}
 		});
 		add(exit);
+	}
+	
+	
+	
+	
+	public MainMenuPanel() {
+		setLayout(null);
+
+		initPicture();
+
+		// title = new JLabel("TETRIS 2019", JLabel.CENTER);
+		// title.setBounds(50, 0, 500, 50);
+		// title.setFont(new Font("Helvetica", Font.BOLD, 36));
+		// title.setForeground(Color.BLUE);
+		// add(title);
+
+		initPlayBut();
+		initHTPBut();
+		initExitBut();
+		
 
 		// masukkin sound
 		Sound.initSound("Sprites/TonariNoTotoro.wav");

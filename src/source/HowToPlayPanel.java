@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class HowToPlayPanel extends JPanel {
+public class HowToPlayPanel extends JPanel implements panel {
 	BufferedImage up;
 	BufferedImage down;
 	BufferedImage right;
@@ -53,9 +53,8 @@ public class HowToPlayPanel extends JPanel {
 			g.drawImage(space, 150, 450, 60, 60, null);
 		}
 	}
-
-	public HowToPlayPanel() {
-		setLayout(null);
+	
+	public void initPicture(){
 		try {
 			icon = ImageIO.read(Board.class.getResource("/icon.png"));
 		} catch (IOException e) {
@@ -100,6 +99,13 @@ public class HowToPlayPanel extends JPanel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public HowToPlayPanel() {
+		setLayout(null);
+		
+		initPict();
+		
 		lbl_title = new JLabel("HOW TO PLAY", JLabel.CENTER);
 		lbl_title.setBounds(100, 20, 500, 50);
 		lbl_title.setFont(new Font("Orange Kid", Font.BOLD, 26));
