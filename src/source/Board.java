@@ -23,7 +23,7 @@ public class Board extends JPanel implements KeyListener {
 	private int score = 0;
 	private String scoreString = "0";
 	
-	private Grid grid;
+	public static Grid grid;
 	
 	private int curIDX;
 	private int holdIDX = 7;
@@ -68,8 +68,8 @@ public class Board extends JPanel implements KeyListener {
 		}
 
 		for (int row = 0; row < 4; row++) {
-			for (int col = 0; col < grid.board[row].length; col++) {
-				grid.board[row][col] = 0;
+			for (int col = 0; col < grid.getBoard()[row].length; col++) {
+				grid.getBoard()[row][col] = 0;
 			}
 		}
 		try {
@@ -80,25 +80,25 @@ public class Board extends JPanel implements KeyListener {
 	}
 	
 	private void cropImages(){
-		piece[0] = new Piece(blocks.getSubimage(0, 0, grid.BLOCKSIZE, grid.BLOCKSIZE), new int[][] { { 1, 1, 1, 1 } }, this, 1); // the
+		piece[0] = new Piece(blocks.getSubimage(0, 0, grid.getBLOCKSIZE(), grid.getBLOCKSIZE()), new int[][] { { 1, 1, 1, 1 } }, this, 1); // the
 		// stick
 
-		piece[1] = new Piece(blocks.getSubimage(1 * grid.BLOCKSIZE, 0, grid.BLOCKSIZE, grid.BLOCKSIZE),
+		piece[1] = new Piece(blocks.getSubimage(1 * grid.getBLOCKSIZE(), 0, grid.getBLOCKSIZE(), grid.getBLOCKSIZE()),
 		new int[][] { { 1, 1, 0 }, { 0, 1, 1 } }, this, 2); // the dog (left)
 		
-		piece[2] = new Piece(blocks.getSubimage(2 * grid.BLOCKSIZE, 0, grid.BLOCKSIZE, grid.BLOCKSIZE),
+		piece[2] = new Piece(blocks.getSubimage(2 * grid.getBLOCKSIZE(), 0, grid.getBLOCKSIZE(), grid.getBLOCKSIZE()),
 		new int[][] { { 0, 1, 1 }, { 1, 1, 0 } }, this, 3); // the dog (right)
 		
-		piece[3] = new Piece(blocks.getSubimage(3 * grid.BLOCKSIZE, 0, grid.BLOCKSIZE, grid.BLOCKSIZE),
+		piece[3] = new Piece(blocks.getSubimage(3 * grid.getBLOCKSIZE(), 0, grid.getBLOCKSIZE(), grid.getBLOCKSIZE()),
 		new int[][] { { 1, 0, 0 }, { 1, 1, 1 } }, this, 4); // the L (left)
 		
-		piece[4] = new Piece(blocks.getSubimage(4 * grid.BLOCKSIZE, 0, grid.BLOCKSIZE, grid.BLOCKSIZE),
+		piece[4] = new Piece(blocks.getSubimage(4 * grid.getBLOCKSIZE(), 0, grid.getBLOCKSIZE(), grid.getBLOCKSIZE()),
 		new int[][] { { 0, 0, 1 }, { 1, 1, 1 } }, this, 5); // the L (right)
 		
-		piece[5] = new Piece(blocks.getSubimage(5 * grid.BLOCKSIZE, 0, grid.BLOCKSIZE, grid.BLOCKSIZE),
+		piece[5] = new Piece(blocks.getSubimage(5 * grid.getBLOCKSIZE(), 0, grid.getBLOCKSIZE(), grid.getBLOCKSIZE()),
 		new int[][] { { 0, 1, 0 }, { 1, 1, 1 } }, this, 6); // the T
 		
-		piece[6] = new Piece(blocks.getSubimage(6 * grid.BLOCKSIZE, 0, grid.BLOCKSIZE, grid.BLOCKSIZE),
+		piece[6] = new Piece(blocks.getSubimage(6 * grid.getBLOCKSIZE(), 0, grid.getBLOCKSIZE(), grid.getBLOCKSIZE()),
 		new int[][] { { 1, 1 }, { 1, 1 } }, this, 7); // the Square
 
 	}
@@ -143,7 +143,7 @@ public class Board extends JPanel implements KeyListener {
 		g.setColor(Color.getHSBColor((float) 0.472, (float) 0.5, (float) 0.76));
 		// g.fillRect(405, 70, 125, 188);
 		g.setColor(new Color(255, 255, 255, 100));
-		g.fillRect(grid.indentX, grid.indentY + 4 * grid.BLOCKSIZE, grid.GRIDWIDTH * grid.BLOCKSIZE, (grid.GRIDHEIGHT - 4) * grid.BLOCKSIZE);
+		g.fillRect(grid.getIndentX(), grid.getIndentY() + 4 * grid.getBLOCKSIZE(), grid.getGRIDWIDTH() * grid.getBLOCKSIZE(), (grid.getGRIDHEIGHT() - 4) * grid.getBLOCKSIZE());
 	}
 	
 	private void createScore(Graphics g){
@@ -159,11 +159,11 @@ public class Board extends JPanel implements KeyListener {
 		
 		currentPiece.render(g);
 		
-		for (int row = 0; row < grid.board.length; row++)
-			for (int col = 0; col < grid.board[0].length; col++)
-				if (grid.board[row][col] != 0)
-					g.drawImage(blocks.getSubimage((grid.board[row][col] - 1) * grid.BLOCKSIZE, 0, grid.BLOCKSIZE, grid.BLOCKSIZE),
-							col * grid.BLOCKSIZE + grid.indentX, row * grid.BLOCKSIZE + grid.indentY, null);
+		for (int row = 0; row < grid.getBoard().length; row++)
+			for (int col = 0; col < grid.getBoard()[0].length; col++)
+				if (grid.getBoard()[row][col] != 0)
+					g.drawImage(blocks.getSubimage((grid.getBoard()[row][col] - 1) * grid.getBLOCKSIZE(), 0, grid.getBLOCKSIZE(), grid.getBLOCKSIZE()),
+							col * grid.getBLOCKSIZE() + grid.getIndentX(), row * grid.getBLOCKSIZE() + grid.getIndentY(), null);
 
 		// gambar nextPiece
 		nextPiece.render(g);
@@ -208,7 +208,7 @@ public class Board extends JPanel implements KeyListener {
 		shifted = true;
 		curIDX = currentPiece.getColor() - 1;
 		if (curIDX == holdIDX)
-			currentPiece.setcY(grid.indentY + 4 * grid.BLOCKSIZE - currentPiece.getCoords().length * grid.BLOCKSIZE);
+			currentPiece.setcY(grid.getIndentY() + 4 * grid.getBLOCKSIZE() - currentPiece.getCoords().length * grid.getBLOCKSIZE());
 		else {
 			int temp = holdIDX;
 			holdIDX = curIDX;
@@ -240,8 +240,8 @@ public class Board extends JPanel implements KeyListener {
 			firstShift();
 		}
 
-		for (int i = 0; i < grid.GRIDWIDTH; i++)
-			if (grid.board[3][i] != 0) {
+		for (int i = 0; i < grid.getGRIDWIDTH(); i++)
+			if (grid.getBoard()[3][i] != 0) {
 				gameOver = true;
 				break;
 			}
@@ -256,10 +256,10 @@ public class Board extends JPanel implements KeyListener {
 			currentPiece.speedDown();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			currentPiece.setdX(-grid.BLOCKSIZE);
+			currentPiece.setdX(-grid.getBLOCKSIZE());
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			currentPiece.setdX(grid.BLOCKSIZE);
+			currentPiece.setdX(grid.getBLOCKSIZE());
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
 			if (!shifted) {
@@ -309,7 +309,11 @@ public class Board extends JPanel implements KeyListener {
 	public int getScore() {
 		return score;
 	}
-
+	
+	public Board getBoard(){
+		return this;
+	}
+	
 	public void setScore(int score) {
 		this.score += score;
 		scoreString = "" + this.score;

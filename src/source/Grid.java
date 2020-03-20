@@ -4,15 +4,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Grid {
-	public final int BLOCKSIZE = 25;
-	public final int GRIDHEIGHT = 24, GRIDWIDTH = 10;
-	public final int indentY = 25 * 2;
-	public final int indentX = 25;
-	public final int borderY = 25 * 24 + indentY;
+	private final int BLOCKSIZE = 25;
+	private final int GRIDHEIGHT = 24, GRIDWIDTH = 10;
+	private final int indentY = 25 * 2;
+	private final int indentX = 25;
+	private final int borderY = 25 * 24 + indentY;
 
-	public final int borderX = 25 * 10 + indentX;
+	private final int borderX = 25 * 10 + indentX;
 	
-	public int[][] board = new int[GRIDHEIGHT][GRIDWIDTH];
+	private int[][] board = new int[GRIDHEIGHT][GRIDWIDTH];
 	
 	public Grid() {
 		// TODO Auto-generated constructor stub
@@ -31,4 +31,29 @@ public class Grid {
 					(GRIDHEIGHT - 4) * BLOCKSIZE + (indentY + (BLOCKSIZE * 4)));
 		}
 	}
+	public int getBLOCKSIZE() {
+		return BLOCKSIZE;
+	}
+	public int getGRIDHEIGHT() {
+		return GRIDHEIGHT;
+	}
+	public int getGRIDWIDTH() {
+		return GRIDWIDTH;
+	}
+	public int getIndentY() {
+		return indentY;
+	}
+	public int getIndentX() {
+		return indentX;
+	}
+	public int getBorderY() {
+		return borderY;
+	}
+	public int getBorderX() {
+		return borderX;
+	}
+	public int[][] getBoard() {
+		return board;
+	}
+	
 }

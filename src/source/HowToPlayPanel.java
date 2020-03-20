@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class HowToPlayPanel extends JPanel implements panel {
+public class HowToPlayPanel extends JPanel implements Panel {
 	BufferedImage up;
 	BufferedImage down;
 	BufferedImage right;
@@ -101,11 +101,7 @@ public class HowToPlayPanel extends JPanel implements panel {
 		}
 	}
 	
-	public HowToPlayPanel() {
-		setLayout(null);
-		
-		initPict();
-		
+	private void initTitle(){
 		lbl_title = new JLabel("HOW TO PLAY", JLabel.CENTER);
 		lbl_title.setBounds(100, 20, 500, 50);
 		lbl_title.setFont(new Font("Orange Kid", Font.BOLD, 26));
@@ -142,12 +138,14 @@ public class HowToPlayPanel extends JPanel implements panel {
 			}
 		});
 		add(lbl_title);
-
-		lbl_up = new JLabel("Rotate Brick", JLabel.CENTER);
-		lbl_up.setBounds(100, 100, 500, 50);
-		lbl_up.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		lbl_up.setForeground(Color.BLACK);
-		lbl_up.addMouseListener(new MouseListener() {
+	}
+	
+	private void initLblLeft(){
+		lbl_left = new JLabel("Move To Left", JLabel.CENTER);
+		lbl_left.setBounds(100, 220, 500, 50);
+		lbl_left.setFont(new Font("Orange Kid", Font.BOLD, 20));
+		lbl_left.setForeground(Color.BLACK);
+		lbl_left.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -161,15 +159,14 @@ public class HowToPlayPanel extends JPanel implements panel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lbl_up.setForeground(Color.BLACK);
+				lbl_left.setForeground(Color.BLACK);
 				stat = 0;
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lbl_up.setForeground(Color.RED);
-				stat = 1;
-
+				lbl_left.setForeground(Color.RED);
+				stat = 3;
 			}
 
 			@Override
@@ -178,8 +175,217 @@ public class HowToPlayPanel extends JPanel implements panel {
 
 			}
 		});
-		add(lbl_up);
+		add(lbl_left);
+	}
+	
+	private void initLblRight(){
+		lbl_right = new JLabel("Move To Right", JLabel.CENTER);
+		lbl_right.setBounds(100, 280, 500, 50);
+		lbl_right.setFont(new Font("Orange Kid", Font.BOLD, 20));
+		lbl_right.setForeground(Color.BLACK);
+		lbl_right.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
 
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lbl_right.setForeground(Color.BLACK);
+				stat = 0;
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lbl_right.setForeground(Color.RED);
+				stat = 4;
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		add(lbl_right);
+	}
+	
+	private void initLblSpace(){
+		lbl_space = new JLabel("Speed Down", JLabel.CENTER);
+		lbl_space.setBounds(100, 340, 500, 50);
+		lbl_space.setFont(new Font("Orange Kid", Font.BOLD, 20));
+		lbl_space.setForeground(Color.BLACK);
+		lbl_space.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lbl_space.setForeground(Color.BLACK);
+				stat = 0;
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lbl_space.setForeground(Color.RED);
+				stat = 6;
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		add(lbl_space);
+	}
+	
+	private void initLblShift(){
+		lbl_shift = new JLabel("Change Brick", JLabel.CENTER);
+		lbl_shift.setBounds(100, 400, 500, 50);
+		lbl_shift.setFont(new Font("Orange Kid", Font.BOLD, 20));
+		lbl_shift.setForeground(Color.BLACK);
+		lbl_shift.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lbl_shift.setForeground(Color.BLACK);
+				stat = 0;
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lbl_shift.setForeground(Color.RED);
+				stat = 5;
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		add(lbl_shift);
+	}
+	
+	private void initLblSpace2(){
+		lbl_space2 = new JLabel("Go To Main Menu After KO!", JLabel.CENTER);
+		lbl_space2.setBounds(100, 450, 500, 50);
+		lbl_space2.setFont(new Font("Orange Kid", Font.BOLD, 20));
+		lbl_space2.setForeground(Color.BLACK);
+		lbl_space2.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lbl_space2.setForeground(Color.BLACK);
+				stat = 0;
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lbl_space2.setForeground(Color.RED);
+				stat = 7;
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		add(lbl_space2);
+	}
+	
+	private void initLblBack(){
+		back = new JLabel("BACK TO MAIN MENU", JLabel.CENTER);
+		back.setBounds(70, 570, 500, 50);
+		back.setFont(new Font("Orange Kid", Font.BOLD, 20));
+		back.setForeground(Color.BLUE);
+		back.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				back.setForeground(Color.BLUE);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				back.setForeground(Color.YELLOW);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				HowToPlayFrame.window.dispose();
+				Sound.stop();
+				new MainMenuFrame();
+			}
+		});
+		add(back);
+
+	}
+	
+	public HowToPlayPanel() {
+		setLayout(null);
+		
+		initPicture();
+		
+		initTitle();
+		initLblUp();
+		initLblDown();
+		initLblLeft();
+		initLblRight();
+		initLblShift();
+		initLblSpace2();
+		initLblSpace();
+		initLblBack();
+
+	}
+	private void initLblDown() {
+		// TODO Auto-generated method stub
 		lbl_down = new JLabel("Soft Drop", JLabel.CENTER);
 		lbl_down.setBounds(100, 160, 500, 50);
 		lbl_down.setFont(new Font("Orange Kid", Font.BOLD, 20));
@@ -216,12 +422,15 @@ public class HowToPlayPanel extends JPanel implements panel {
 			}
 		});
 		add(lbl_down);
+	}
 
-		lbl_left = new JLabel("Move To Left", JLabel.CENTER);
-		lbl_left.setBounds(100, 220, 500, 50);
-		lbl_left.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		lbl_left.setForeground(Color.BLACK);
-		lbl_left.addMouseListener(new MouseListener() {
+	private void initLblUp() {
+		// TODO Auto-generated method stub
+		lbl_up = new JLabel("Rotate Brick", JLabel.CENTER);
+		lbl_up.setBounds(100, 100, 500, 50);
+		lbl_up.setFont(new Font("Orange Kid", Font.BOLD, 20));
+		lbl_up.setForeground(Color.BLACK);
+		lbl_up.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -235,14 +444,15 @@ public class HowToPlayPanel extends JPanel implements panel {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lbl_left.setForeground(Color.BLACK);
+				lbl_up.setForeground(Color.BLACK);
 				stat = 0;
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lbl_left.setForeground(Color.RED);
-				stat = 3;
+				lbl_up.setForeground(Color.RED);
+				stat = 1;
+
 			}
 
 			@Override
@@ -251,186 +461,7 @@ public class HowToPlayPanel extends JPanel implements panel {
 
 			}
 		});
-		add(lbl_left);
-
-		lbl_right = new JLabel("Move To Right", JLabel.CENTER);
-		lbl_right.setBounds(100, 280, 500, 50);
-		lbl_right.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		lbl_right.setForeground(Color.BLACK);
-		lbl_right.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lbl_right.setForeground(Color.BLACK);
-				stat = 0;
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lbl_right.setForeground(Color.RED);
-				stat = 4;
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-		add(lbl_right);
-
-		lbl_shift = new JLabel("Change Brick", JLabel.CENTER);
-		lbl_shift.setBounds(100, 400, 500, 50);
-		lbl_shift.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		lbl_shift.setForeground(Color.BLACK);
-		lbl_shift.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lbl_shift.setForeground(Color.BLACK);
-				stat = 0;
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lbl_shift.setForeground(Color.RED);
-				stat = 5;
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-		add(lbl_shift);
-
-		lbl_space2 = new JLabel("Go To Main Menu After KO!", JLabel.CENTER);
-		lbl_space2.setBounds(100, 450, 500, 50);
-		lbl_space2.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		lbl_space2.setForeground(Color.BLACK);
-		lbl_space2.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lbl_space2.setForeground(Color.BLACK);
-				stat = 0;
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lbl_space2.setForeground(Color.RED);
-				stat = 7;
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-		add(lbl_space2);
-
-		lbl_space = new JLabel("Speed Down", JLabel.CENTER);
-		lbl_space.setBounds(100, 340, 500, 50);
-		lbl_space.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		lbl_space.setForeground(Color.BLACK);
-		lbl_space.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lbl_space.setForeground(Color.BLACK);
-				stat = 0;
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lbl_space.setForeground(Color.RED);
-				stat = 6;
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-		add(lbl_space);
-
-		back = new JLabel("BACK TO MAIN MENU", JLabel.CENTER);
-		back.setBounds(70, 570, 500, 50);
-		back.setFont(new Font("Orange Kid", Font.BOLD, 20));
-		back.setForeground(Color.BLUE);
-		back.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				back.setForeground(Color.BLUE);
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				back.setForeground(Color.YELLOW);
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				HowToPlayFrame.window.dispose();
-				Sound.stop();
-				new MainMenuFrame();
-			}
-		});
-		add(back);
+		add(lbl_up);
 
 	}
 

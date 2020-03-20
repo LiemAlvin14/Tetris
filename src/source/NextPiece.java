@@ -15,12 +15,12 @@ public class NextPiece extends Piece {
 		for (int y = 0; y < coords.length; y++) {
 			for (int x = 0; x < coords[y].length; x++) {
 				if (coords[y][x] != 0 && coords[0].length != 4 && coords[0].length != 2)
-					g.drawImage(block, x * Board.BLOCKSIZE + 425, y * Board.BLOCKSIZE + 2 * board.getIndentY() - 5,
+					g.drawImage(block, x * board.grid.getBLOCKSIZE() + 425, y * board.grid.getBLOCKSIZE() + 2 * board.grid.getIndentY() - 5,
 							null);
 				else if (coords[y][x] != 0 && coords[0].length == 4)
-					g.drawImage(block, x * Board.BLOCKSIZE + 415, y * Board.BLOCKSIZE + 2 * board.getIndentY(), null);
+					g.drawImage(block, x * board.grid.getBLOCKSIZE() + 415, y * board.grid.getBLOCKSIZE() + 2 * board.grid.getIndentY(), null);
 				else if (coords[y][x] != 0)
-					g.drawImage(block, x * Board.BLOCKSIZE + 440, y * Board.BLOCKSIZE + 2 * board.getIndentY() - 5,
+					g.drawImage(block, x * board.grid.getBLOCKSIZE() + 440, y * board.grid.getBLOCKSIZE() + 2 * board.grid.getIndentY() - 5,
 							null);
 			}
 		}
